@@ -51,7 +51,7 @@ public class HotelController extends AbstractRestHandler {
                                       @ApiParam(value = "Tha page size", required = true)
                                       @RequestParam(value = "size", required = true, defaultValue = DEFAULT_PAGE_SIZE) Integer size,
                                       HttpServletRequest request, HttpServletResponse response) {
-        System.out.println ("***********      getting all hotels       ***********");
+        System.out.println ("***********      getting all the hotels       ***********");
         return this.hotelService.getAllHotels(page, size);
     }
 
