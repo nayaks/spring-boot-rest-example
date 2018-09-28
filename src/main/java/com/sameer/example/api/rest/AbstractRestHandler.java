@@ -1,8 +1,8 @@
-package com.khoubyari.example.api.rest;
+package com.sameer.example.api.rest;
 
-import com.khoubyari.example.domain.RestErrorInfo;
-import com.khoubyari.example.exception.DataFormatException;
-import com.khoubyari.example.exception.ResourceNotFoundException;
+import com.sameer.example.domain.RestErrorInfo;
+import com.sameer.example.exception.DataFormatException;
+import com.sameer.example.exception.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;

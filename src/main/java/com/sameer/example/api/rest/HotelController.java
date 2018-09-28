@@ -1,12 +1,11 @@
-package com.khoubyari.example.api.rest;
+package com.sameer.example.api.rest;
 
+import com.sameer.example.domain.Hotel;
+import com.sameer.example.exception.DataFormatException;
+import com.sameer.example.service.HotelService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-
-import com.khoubyari.example.domain.Hotel;
-import com.khoubyari.example.exception.DataFormatException;
-import com.khoubyari.example.service.HotelService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -52,6 +51,7 @@ public class HotelController extends AbstractRestHandler {
                                       @ApiParam(value = "Tha page size", required = true)
                                       @RequestParam(value = "size", required = true, defaultValue = DEFAULT_PAGE_SIZE) Integer size,
                                       HttpServletRequest request, HttpServletResponse response) {
+        System.out.println ("***********      getting all hotels       ***********");
         return this.hotelService.getAllHotels(page, size);
     }
 
@@ -81,6 +81,8 @@ public class HotelController extends AbstractRestHandler {
                                  @PathVariable("id") Long id, @RequestBody Hotel hotel,
                                  HttpServletRequest request, HttpServletResponse response) {
         checkResourceFound(this.hotelService.getHotel(id));
+//        System.out.println("**********  ID in DB is ="+hotel.getId()+" and passed ID is ="+id+"    ***********\n");
+//        if (id != hotel.getId()) throw new DataFormatException("ID doesn't match!");
         if (id != hotel.getId()) throw new DataFormatException("ID doesn't match!");
         this.hotelService.updateHotel(hotel);
     }

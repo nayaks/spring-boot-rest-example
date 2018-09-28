@@ -1,4 +1,4 @@
-package com.khoubyari.example;
+package com.sameer.example;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -16,7 +16,7 @@ public class RestControllerAspect {
 
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    @Before("execution(public * com.khoubyari.example.api.rest.*Controller.*(..))")
+    @Before("execution(public * com.sameer.example.api.rest.*Controller.*(..))")
     public void logBeforeRestCall(JoinPoint pjp) throws Throwable {
         log.info(":::::AOP Before REST call:::::" + pjp);
     }

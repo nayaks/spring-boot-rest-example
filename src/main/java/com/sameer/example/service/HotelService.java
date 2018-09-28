@@ -1,7 +1,7 @@
-package com.khoubyari.example.service;
+package com.sameer.example.service;
 
-import com.khoubyari.example.domain.Hotel;
-import com.khoubyari.example.dao.jpa.HotelRepository;
+import com.sameer.example.domain.Hotel;
+import com.sameer.example.dao.jpa.HotelRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +10,9 @@ import org.springframework.boot.actuate.metrics.GaugeService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
 
 /*
  * Sample service to demonstrate what the API would use to get things done
@@ -28,7 +31,12 @@ public class HotelService {
     @Autowired
     GaugeService gaugeService;
 
-    public HotelService() {
+    @Autowired
+    protected EntityManager em;
+
+
+    public HotelService(EntityManager em) {
+        this.em=em;
     }
 
     public Hotel createHotel(Hotel hotel) {
@@ -39,8 +47,11 @@ public class HotelService {
         return hotelRepository.findOne(id);
     }
 
+    @Transactional
     public void updateHotel(Hotel hotel) {
         hotelRepository.save(hotel);
+        em.joinTransaction();
+        em.createNamedQuery("redactPIIinTitle").setParameter(1, hotel.getId()).executeUpdate();
     }
 
     public void deleteHotel(Long id) {

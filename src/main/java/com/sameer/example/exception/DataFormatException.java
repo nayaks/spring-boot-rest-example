@@ -1,4 +1,4 @@
-package com.khoubyari.example.exception;
+package com.sameer.example.exception;
 
 /**
  * for HTTP 400 errors

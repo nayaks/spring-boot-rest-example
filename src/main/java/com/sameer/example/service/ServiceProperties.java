@@ -1,4 +1,4 @@
-package com.khoubyari.example.service;
+package com.sameer.example.service;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.khoubyari.example.domain;
+package com.sameer.example.domain;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
@@ -10,6 +10,19 @@ import javax.xml.bind.annotation.*;
 @Table(name = "hotel")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
+
+@SqlResultSetMapping(name="updateResult", columns = { @ColumnResult(name = "count")})
+
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name    =   "redactPIIinTitle",
+                query   =   "UPDATE hotel \n" +
+                        "SET stixData = JSON_REPLACE(stixData, '$.specifications.title', 'PII REDACTED') \n" +
+                        "WHERE id=?;"
+                ,resultSetMapping = "updateResult"
+        )
+})
+
 public class Hotel {
 
     @Id

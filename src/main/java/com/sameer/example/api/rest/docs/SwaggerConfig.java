@@ -1,4 +1,4 @@
-package com.khoubyari.example.api.rest.docs;
+package com.sameer.example.api.rest.docs;
 
 import com.google.common.base.Predicates;
 
