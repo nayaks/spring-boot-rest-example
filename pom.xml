@@ -146,6 +146,21 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>com.sameer.example.Application</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
 			<!-- Spring boot support -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
