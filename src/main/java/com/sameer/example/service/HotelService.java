@@ -50,8 +50,10 @@ public class HotelService {
     @Transactional
     public void updateHotel(Hotel hotel) {
         hotelRepository.save(hotel);
-        em.joinTransaction();
-        em.createNamedQuery("redactPIIinTitle").setParameter(1, hotel.getId()).executeUpdate();
+// change db to mysql and then uncomment the 2 lines below for supporting
+// update of json column using NamedNativeQuery defined in Hotel.class
+//        em.joinTransaction();
+//        em.createNamedQuery("redactPIIinTitle").setParameter(1, hotel.getId()).executeUpdate();
     }
 
     public void deleteHotel(Long id) {
