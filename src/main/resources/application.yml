@@ -10,7 +10,7 @@ spring.datasource:
     url: jdbc:h2:mem:bootexample;MODE=MySQL
 
 server:
-  port: 8090
+  port: 8080
 
 #todo: make sure to always enable security in production
 security:
@@ -19,7 +19,7 @@ security:
 
 #management endpoints on a separate port
 management:
-  port: 8091
+  port: 8081
   security:
     enabled: false # management port is internal only. no need to secure it.
 
