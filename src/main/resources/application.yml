@@ -19,7 +19,7 @@ security:
 
 #management endpoints on a separate port
 management:
-  port: 8081
+  port: 8080
   security:
     enabled: false # management port is internal only. no need to secure it.
 
