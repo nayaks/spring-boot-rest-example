@@ -47,7 +47,7 @@ pipeline {
     script {
      openshift.withCluster() {
       openshift.withProject(env.DEV_PROJECT) {
-       openshift.newBuild("--name=spring-boot-rest-example", "--image-stream=openjdk18-openshift", "--binary=true")
+       openshift.newBuild("--name=spring-boot-rest-example", "--image-stream=redhat-openjdk18-openshift:1.2", "--binary=true")
       }
      }
     }
@@ -107,7 +107,7 @@ pipeline {
     }
    }
   }
-  stage('Promote to STAGE?') {
+  stage('Promote to STAGE') {
    steps {
     script {
      openshift.withCluster() {

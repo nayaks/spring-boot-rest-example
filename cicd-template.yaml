@@ -185,7 +185,7 @@ pipeline {
         script {
           openshift.withCluster() {
             openshift.withProject(env.DEV_PROJECT) {
-                openshift.selector("dc", "spring-boot-rest-example", "--wait").rollout().latest();
+                openshift.selector("dc", "spring-boot-rest-example").rollout().latest();
             }
           }
         }
@@ -212,8 +212,8 @@ pipeline {
               }
 
               openshift.newApp("spring-boot-rest-example:${version}").narrow("svc").expose()
-              openshift.set("probe dc/spring-boot-rest-example --readiness --get-url=http://:8080/actuator/health --initial-delay-seconds=30 --failure-threshold=10 --period-seconds=10")
-              openshift.set("probe dc/spring-boot-rest-example --liveness  --get-url=http://:8080/actuator/health --initial-delay-seconds=180 --failure-threshold=10 --period-seconds=10")
+              openshift.set("probe dc/spring-boot-rest-example --readiness --get-url=http://:8080/health --initial-delay-seconds=30 --failure-threshold=10 --period-seconds=10")
+              openshift.set("probe dc/spring-boot-rest-example --liveness  --get-url=http://:8080/health --initial-delay-seconds=180 --failure-threshold=10 --period-seconds=10")
             }
           }
         }
